@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Components</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <style>
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(./homebg2.jpg); /* Replace with your image path */
+      background-size: cover; /* Scales the image to cover the whole screen */
+      background-position: center; /* Centers the image */
+      background-repeat: no-repeat; /* Prevents the image from repeating */
+      z-index: -1; /* Places the background behind other content */
+  }
+    .feature-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: .75rem;
+  }
+  
+  </style>
+</head>
+
+<body>
+  <div class="background"></div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="./images-removebg-preview.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            VCET
+          </a>
+        </div>
+      </nav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Student Login 
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Report Card</a></li>
+              <li><a class="dropdown-item" href="./attendence.html">Attendence</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Defaults</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold text-body-emphasis">VCET SPACE</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        "Welcome to II-CSE-B, where learning meets inspiration! Our classroom is a space for curiosity, discovery, and growth, where students come together to explore new ideas and unlock their full potential. We believe in learning together, growing together, and building a brighter future for every student. Join us on this exciting journey as we empower each other with knowledge and create a community of lifelong learners!" 
+        
+        </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <p><a class="btn btn-primary btn-lg px-4 me-sm-3" href="./home.html"> Home</button>
+          <p><a class="btn btn-outline-secondary btn-lg px-4" href="https://classroom.google.com/?pli=1">Classroom</button></a>
+      </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        <img src="./VCET.jpeg" class="img-fluid border rounded-3 shadow-lg " alt="Example image" width=" 700px " height="500px">
+      </div>
+    </div>
+  </div>
+  <div class="container px-3 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom">Millestones</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="./award.svg" height="30px">    
+            </div>
+        <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+        <p>India Today Ranking 2019: First in the country for lowest fee structure and ninth in the state for career progression and placement 
+          Competition Success Review: Second in the country for excellence in education 
+           </p>
+        <a href="#" class="icon-link">
+          Call to action
+          
+        </a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="./buildings.svg" height="30px">
+        </div>
+        <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+        <p>This college provides good laboratory facilities and smart classes in every classroom. It also has one big library in Madurai. It provides a neat canteen and average pricing for food.</p>
+        <a href="#" class="icon-link">
+          Call to action
+          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+        </a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="./globe2.svg" height="30px">
+        </div>
+        <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+        <a href="#" class="icon-link">
+          Call to action
+          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+  <div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./clgfront.jfif" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./room.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./student.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  </div>
+  <br />
+  <hr />
+  <footer class="footer mt-auto py-3 bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="text-body-secondary">Contact us: <a href="tel: 099949 94991"> 099949 94991</a></span>
+    </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            top: 0;
+            left: -250px; 
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar.open {
+            left: 0; 
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            display: block;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .content {
+            margin-left: 0; 
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 100%;
+            height: 400px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+       
+        .toggle-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .close-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 200px;
+            }
+            .content {
+                margin-left: 0;
+            }
+        }
+
+        
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar">
+        <button class="close-btn" onclick="closeSidebar()">×</button>
+        <h4 class="text-center"></h4>
+        <h2><u>Students List :</u></h2>
+        <p>
+            <ol>
+                
+                <li>Amritha.B</li>
+                <li>ANUSHRI.B</li>
+                <li>AZHAGU MEENA G</li>
+                <li>Devis Aruna Devi.D</li>
+                <li>Dhanya Johnsy .AR</li>
+                <li>Gopika Rani.A.M</li>
+                <li>Harini .T</li>
+                <li>INIYA.M</li>
+                <li>JANANI KAMATCHI .S</li>
+                <li>JEEVAJOTHI M</li>
+                <li>Jeyashree.K.A</li>
+                <li>Kannika G</li>
+                <li>KARISHMA S</li>
+                <li>Kavitha. M</li>
+                <li>KEERTHIGA T S</li>
+                <li>Keerthiga.K</li>
+                <li>MANASA ASVITHA CK.M</li>
+                <li>MANSHA T R</li>
+                <li>Naga harini .M</li>
+                <li>Priya dharshini.M</li>
+                <li>RAJADHARSHINI R</li>
+                <li>RAKSANA V</li>
+                <li>SHREE VIKHASHINI.J</li>
+                <li>SUSHMITHA. T</li>
+                <li>Vaishnavi.S</li>
+                <li>VIKASNI T R</li>
+                <li>VISHNU PRIYA.T.K.</li>
+                <li>YAMUNA R</li>
+                <li>YUVASRI R</li>
+                <li>ABISHEK GUHAN P</li>
+                <li>ACHUTHAN T B</li>
+                <li>ADITHYA T B</li>
+                <li>AGILESH K K</li>
+                <li>Dakshin B</li>
+                <li>JAYAKANTH.S</li>
+                <li>Karuppasamy.M</li>
+                <li>Kishore TS</li>
+                <li>LOGESH KUMAR M</li>
+                <li>Manavendra Shailesh.A</li>
+                <li>MUGESH BALA M</li>
+                <li>Muhammad Yahyaa</li>
+                <li>MUTHEESWARAN.R</li>
+                <li>Muthunilavan D</li>
+                <li>NAGAVISHNU KARTHIK B S</li>
+                <li>PENIEL OSBORN J</li>
+                <li>Prabanchan K</li>
+                <li>Pranav Hari.t.n</li>
+                <li>PRAWIN KUMAR .M</li>
+                <li>ROHAN GANDHI S</li>
+                <li>SHANMUGAPIRIYAN M</li>
+                <li>SHIVESHWAR S</li>
+                <li>Shyaam Sundar PCM</li>
+                <li>SIVA SUBRAMANI. S</li>
+                <li>Sree Krishna K N</li>
+                <li>SURAJ GV</li>
+                <li>SURYA PRAKASH S</li>
+                <li>SURYA S</li>
+                <li>VISHAL.J</li>
+                <li>vishal.S</li>
+                <li>VITHESH T</li>
+                <li>VIVASH.V</li>
+                <li>MUGESH KANNA G</li>
+                <li>SANTHOSH S</li>
+                <li>SANTHOSH KUMAR</li>
+                <li>KRISHNA KUMAR N</li>
+          
+               
+            </ol>
+        </p>
+    </div>
+    <div class="content">
+        <div class="chart-container">
+            <canvas id="attendanceChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+            sidebar.classList.toggle('open'); 
+            if (sidebar.classList.contains('open')) {
+                content.style.marginLeft = '250px'; 
+            } else {
+                content.style.marginLeft = '0'; 
+            }
+        }
+        function closeSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+            sidebar.classList.remove('open'); 
+            content.style.marginLeft = '0'; 
+        }
+        const labels = Array.from({ length: 64 }, (_, i) => i + 1);
+        const attendanceData = [
+            92.54, 96.27, 98.51, 95.52, 90.3, 92.54, 97.76, 98.51, 97.01, 93.28,
+            92.54, 98.51, 95.52, 100, 91.79, 95.52, 94.03, 95.52, 91.79, 94.03,
+            91.04, 98.51, 98.51, 100, 94.03, 95.52, 97.01, 95.52, 94.03, 100,
+            98.51, 95.52, 97.01, 88.81, 91.79, 97.01, 92.54, 95.52, 88.06, 95.52,
+            96.27, 95.52, 94.03, 100, 88.06, 91.04, 97.01, 91.04, 97.01, 94.03,
+            87.31, 92.54, 97.01, 100, 92.54, 88.81, 98.51, 97.01, 95.52, 94.03,
+            55.22, 52.99, 56.72, 54.48
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Attendance Percentage',
+                data: attendanceData,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                pointRadius: 4,
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, 
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 50,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10
+                        },
+                        title: {
+                            display: true,
+                            text: 'Attendance %'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Student Number'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Student Attendance Percentage'
+                        
+                    }
+                }
+            }
+        };
+
+        const attendanceChart = new Chart(
+            document.getElementById('attendanceChart'),
+            config
+        );
+    </script>
+
+</body>
+</html>
